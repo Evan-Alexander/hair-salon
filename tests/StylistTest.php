@@ -38,6 +38,23 @@
 
             $this->assertEquals($stylist_name, $result);
         }
+
+        protected function tearDown()
+        {
+            Client::deleteAll();
+            Stylist::deleteAll();
+        }
+
+        function test_save()
+        {
+            $stylist_name = "Samantha";
+            $new_stylist = new Stylist($stylist_name);
+            $new_stylist->save();
+
+            $result = Stylist::getAll();
+
+            $this->assertEquals($new_stylist, $result[0]);
+        }
     }
 
 ?>
