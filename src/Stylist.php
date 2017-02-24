@@ -45,7 +45,7 @@
 
         static function GetAll()
         {
-            $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylist;");
+            $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
             $stylists = array();
             foreach ($returned_stylists as $stylist) {
                 $stylist_name = $stylist['stylist_name'];
