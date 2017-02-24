@@ -7,12 +7,11 @@ An app for a hair salon. The owner will be able to add stylists, and for each st
 
 &nbsp;
 ## Database Setup
-CREATE DATABASE Stylist
-USE hair_salon
-CREATE TABLE stylist (name VARCHAR (255), client_id INT);
-ALTER TABLE stylist ADD id serial PRIMARY KEY;
+CREATE DATABASE hair_salon;
+USE hair_salon;
+CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR (255), client_id int);
 
-CREATE TABLE client (id serial PRIMARY KEY, client_name VARCHAR(255));
+CREATE TABLE clients (id serial PRIMARY KEY, client_name VARCHAR(255));
 &nbsp;
 ## Specifications
 
