@@ -94,7 +94,7 @@
             Client::deleteAll();
             $result = Client::getAll();
 
-            // $this->assertEquals([], $result);
+            $this->assertEquals([], $result);
 
         }
     }

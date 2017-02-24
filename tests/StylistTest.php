@@ -70,6 +70,21 @@
 
             $this->assertEquals([$new_stylist1, $new_stylist2], $result);
         }
+
+        function test_deleteAll()
+        {
+            $stylist = "Josh";
+            $stylist2 = "Kat";
+            $new_stylist = new Stylist($stylist);
+            $new_stylist->save();
+            $new_stylist2 = new Stylist($stylist2);
+            $new_stylist2->save();
+
+            Stylist::deleteAll();
+            $result = Stylist::getAll();
+
+            $this->assertEquals([], $result);
+        }
     }
 
 ?>
