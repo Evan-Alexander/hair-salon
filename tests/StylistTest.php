@@ -15,14 +15,23 @@
 
     class StylistTest extends PHPUnit_Framework_TestCase
     {
-
+        protected function tearDown()
+        {
+            Client::deleteAll();
+            Stylist::deleteAll();
+        }
 
         function test_getId()
         {
             // Arrange
+            $client_name = "Carl";
+            $new_client = new Client($client_name);
+            $new_client->save();
+            $client_id = $new_client->getId();
+
             $id = 1;
             $stylist_name = "Sam";
-            $new_stylist = new Stylist($stylist_name, $id);
+            $new_stylist = new Stylist($stylist_name, $client_id, $id);
             // Act
             $result = $new_stylist->getId();
             // Assert
@@ -31,18 +40,17 @@
 
         function test_getStylistName()
         {
+            $client_name = "Joe";
+            $new_client = new Client($client_name);
+            $new_client->save();
+            $client_id = $new_client->getId();
+
             $stylist_name = "Kim";
-            $new_stylist = new Stylist($stylist_name);
+            $new_stylist = new Stylist($stylist_name, $client_id);
 
             $result = $new_stylist->getStylistName();
 
             $this->assertEquals($stylist_name, $result);
-        }
-
-        protected function tearDown()
-        {
-            Client::deleteAll();
-            Stylist::deleteAll();
         }
 
         function test_save()
