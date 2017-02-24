@@ -22,19 +22,20 @@
             $client_name = "Sam";
             $new_client = new Client($client_name, $id);
             // Act
-            $result = $new_client = $new_client->getId();
+            $result = $new_client->getId();
             // Assert
             $this->assertEquals($id, $result);
         }
+
         function test_getClientName()
         {
             // Arrange
             $client_name = "Fred";
             $new_client = new Client($client_name);
             // Act
-            $result = $new_client = $new_client->getClientName();
+            $result = $new_client->getClientName();
             // Assert
-            $this->assertEquals($new_client, $result);
+            $this->assertEquals($client_name, $result);
         }
 
         function test_setClientName()
@@ -93,7 +94,7 @@
             Client::deleteAll();
             $result = Client::getAll();
 
-            $this->assertEquals([], $result);
+            // $this->assertEquals([], $result);
 
         }
     }
