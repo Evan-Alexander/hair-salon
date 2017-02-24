@@ -97,5 +97,19 @@
             $this->assertEquals([], $result);
 
         }
+
+        function test_find()
+        {
+            $client1 = "Frankenstein";
+            $client2 = "Dracula";
+            $new_client1 = new Client($client1);
+            $new_client1->save();
+            $new_client2 = new Client($client2);
+            $new_client2->save();
+
+            $result = Client::find($new_client2->getId());
+
+            $this->assertEquals($new_client2, $result);
+        }
     }
     ?>
