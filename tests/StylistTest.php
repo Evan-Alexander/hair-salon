@@ -53,6 +53,23 @@
             $this->assertEquals($stylist_name, $result);
         }
 
+        function test_setStylistName()
+        {
+            $client_name = "Joe";
+            $new_client = new Client($client_name);
+            $new_client->save();
+            $client_id = $new_client->getId();
+
+            $stylist_name = "Kim";
+            $new_stylist = new Stylist($stylist_name, $client_id);
+            $new_stylist_name = "Kimberly";
+
+            $new_stylist->setStylistName($new_stylist_name);
+            $result = $new_stylist->getStylistName();
+
+            $this->assertEquals($new_stylist_name, $result);
+        }
+
         function test_save()
         {
             $stylist_name = "Samantha";
