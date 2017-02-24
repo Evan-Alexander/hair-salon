@@ -5,8 +5,8 @@
     * @backupStaticAttributes disabled
     */
 
-    require_once "src/Stylist.php";
     require_once "src/Client.php";
+    require_once "src/Stylist.php";
 
     $server = 'mysql:host=localhost:8889;dbname=hair_salon_test';
     $username = 'root';
@@ -15,23 +15,28 @@
 
     class StylistTest extends PHPUnit_Framework_TestCase
     {
-        function test_constructorAndGetters()
+
+
+        function test_getId()
         {
             // Arrange
-            $stylist_name = "Sue";
-            $client_id = 1;
             $id = 1;
-
+            $stylist_name = "Sam";
+            $new_stylist = new Stylist($stylist_name, $id);
             // Act
-            $new_stylist = new Stylist($stylist_name, $client_id, $id);
-
+            $result = $new_stylist->getId();
             // Assert
-            $result_stylist_name = $new_stylist->getStylistName();
-            $result_client_id = $new_stylist->getClientId();
-            $result_array = array();
-            array_push($result_array, $result_stylist_name, $result_client_id);
+            $this->assertEquals($id, $result);
+        }
 
-            $this->assertEquals($result_array, [$stylist_name, $client_id]);
+        function test_getStylistName()
+        {
+            $stylist_name = "Kim";
+            $new_stylist = new Stylist($stylist_name);
+
+            $result = $new_stylist->getStylistName();
+
+            $this->assertEquals($stylist_name, $result);
         }
     }
 
