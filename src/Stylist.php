@@ -22,7 +22,7 @@
             return $this->stylist_name;
         }
 
-        function setClientId()
+        function setClientId($new_client_id)
         {
             $this->client_id = (int) $new_client_id;
         }
