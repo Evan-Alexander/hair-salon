@@ -1,5 +1,5 @@
-# **Animal Shelter**
-#### Jason Brown & Brendan Grubb, 2/24/2017
+# **Hair Salon**
+#### Jason Brown 2/24/2017
 
 &nbsp;
 ## Description
