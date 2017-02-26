@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <meta charset="utf-8">
+        <title>Client Editor</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Edit client information:</h1>
+            <div class="well">
+                {% if client is not empty %}
+                <ul>
+                    <li>{{ client.getClientName }}</li>
+                </ul>
+                <form class="form-group" action="/display-update" method="post">
+                    <input name="_method" type="hidden" name="id" value="{{ client.getId }}">
+                    <input id="id" type="hidden" name="id" value="{{ client.getid() }}">
+                    <label for="new-name">Does the client prefer to be called by another name?</label>
+                    <input type="text" name="new-name" class="form-control" value="{{client.getClientName}}">
+                    <label for="stylist_update">Change Stylist for client?</label>
+                    <select class="form-control" name="stylist_update">
+                        <option value="{{client.getStylist_Id}}">No change</option>
+                        {% for sytlist in stylists %}
+                        <option value="{{ stylist.getId }}">{{stylist.getStylistName}}</option>
+                        {% endfor %}
+                    </select>
+                    <button class="btn btn-info" type="submit" name="button">Update</button>
+                </form>
+                {% endif %}
+                <form class="form-group" action="/delete_client/{{ client.getId }}" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button id="delete" class="btn btn-danger" type="submit" name="button">Remove Client</button>
+                </form>
+            </div>
+            <li><a class="return" href="/">Home</a></li>
+
+        </div>
+
+    </body>
+</html>
