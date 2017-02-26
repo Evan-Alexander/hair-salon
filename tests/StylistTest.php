@@ -143,5 +143,4 @@
             $this->assertEquals(array($new_client2), $result);
         }
     }
-
 ?>
