@@ -87,6 +87,13 @@
             }
             return $found_clients;
         }
+
+        function update($new_name, $new_cuisine_id)
+        {
+            $this->setClientName($new_name);
+            $this->setStylist_Id($new_cuisine_id);
+            $GLOBALS['DB']->exec("UPDATE clients SET client_name = '{$this->client_name}', cuisine_id = '{$this->cuisine_id}' WHERE id = {$this->getId()};");
+        }
     }
 
 

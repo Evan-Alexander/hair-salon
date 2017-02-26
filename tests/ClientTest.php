@@ -156,6 +156,28 @@
             $this->assertEquals(array($test_client1), $result);
         }
 
+        function test_update()
+        {
+            $client_name = "Joe";
+            $stylist_id = 1;
+            $id = 1;
+            $new_client = new Client($client_name, $stylist_id, $id);
+            $new_client->save();
+            $replacement_name = "Don";
+            $replacement_stylist_id = 2;
+            $replacement_client_id = 3;
+            $replacement_client = new Client($replacement_name, $replacement_stylist_id, $replacement_client_id);
+            $replacement_client->save();
+
+            $new_client->update($replacement_name, $replacement_stylist_id);
+
+            $result = array($result_name = $new_client->getClientName(), $result_stylist_id = $new_client->getStylist_Id());
+
+            $comparison = array($comparison_name = $replacement_client->getClientName(), $comparison_stylist_id = $replacement_client->getStylist_Id());
+
+            $this->assertEquals($comparison, $result);
+        }
+
 
     }
 ?>
