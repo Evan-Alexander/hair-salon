@@ -138,6 +138,24 @@
 
         }
 
+        function test_searchByStylist()
+        {
+            $client = 'Joe';
+            $stylist_id = 1;
+            $id = null;
+            $test_client1 = new Client($client, $stylist_id, $id);
+            $test_client1->save();
+
+            $client2 = 'Jack';
+            $stylist_id2 = 3;
+            $id2 = null;
+            $test_client2 = new Client($client2, $stylist_id2, $id2);
+            $test_client2->save();
+
+            $result = Client::searchBystylist($stylist_id);
+            $this->assertEquals(array($test_client1), $result);
+        }
+
 
     }
 ?>

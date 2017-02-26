@@ -74,6 +74,19 @@
             }
             return $found_client;
         }
+
+        static function searchBystylist($stylist_id)
+        {
+            $found_clients = array();
+            $clients = Client::getAll();
+            foreach ($clients as $client) {
+                $found_stylist_id = $client->getStylist_Id();
+                if ($found_stylist_id == $stylist_id) {
+                    array_push($found_clients, $client);
+                }
+            }
+            return $found_clients;
+        }
     }
 
 
