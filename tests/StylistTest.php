@@ -67,10 +67,10 @@
         {
 
             //Arrange
-            $name = "Work stuff";
+            $name = "Bob";
             $test_Stylist = new Stylist($name);
             $test_Stylist->save();
-            $name2 = "Home stuff";
+            $name2 = "Roy";
             $test_Stylist2 = new Stylist($name2);
             $test_Stylist2->save();
             //Act
@@ -92,6 +92,18 @@
             $result = Stylist::getAll();
 
             $this->assertEquals([], $result);
+        }
+
+        function test_find()
+        {
+            $name = "Marsha";
+            $test_stylist = new Stylist($name);
+
+            $test_stylist->save();
+
+            $result = Stylist::find($test_stylist->getId());
+
+            $this->assertEquals($test_stylist, $result);
         }
     }
 
