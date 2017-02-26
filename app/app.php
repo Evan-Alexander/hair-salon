@@ -39,5 +39,27 @@ date_default_timezone_set('America/Los_Angeles');
     return $app['twig']->render('stylist.html.twig', array('stylists' => Stylist::find($id), 'clients' => Client::searchBystylist($id)));
     });
 
+    $app->post("/client", function() use ($app) {
+    $new_client = new Client ($_POST['client_name'], $_POST['stylist_id']);
+    $new_client->save();
+    return $app['twig']->render('stylist.html.twig', array('stylists' => Stylist::find($_POST['stylist_id']), 'clients' => Client::searchBystylist($_POST['stylist_id'])));
+    });
+
+    $app->get("/client-edit/{id}", function($id) use ($app) {
+    return $app['twig']->render('client-editor.html.twig', array('client' => Client::find($id), 'stylists' => Stylist::getAll()));
+    });
+
+    $app->patch("/display-update", function() use ($app) {
+        $current_client = Client::find($_POST['id']);
+        $current_client->update($_POST['new-name'], $_POST['stylist_update']);
+        return $app['twig']->render('stylist.html.twig', array('stylists' => Stylist::find($_POST['stylist_update']), 'clients' => Client::searchBystylist($_POST['stylist_update'])));
+    });
+
+    $app->delete("/delete_client/{id}", function($id) use ($app) {
+        $client = Client::find($id);
+        $client->deleteclient();
+        return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+    });
+
     return $app;
 ?>
