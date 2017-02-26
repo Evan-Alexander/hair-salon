@@ -78,6 +78,21 @@
             //Assert
             $this->assertEquals([$test_Stylist, $test_Stylist2], $result);
         }
+
+        function test_deleteAll()
+        {
+            $name = "Frank";
+            $name2 = "Hank";
+            $test_stylist = new Stylist($name);
+            $test_stylist->save();
+            $test_stylist2 = new Stylist($name2);
+            $test_stylist->save();
+
+            Stylist::deleteAll();
+            $result = Stylist::getAll();
+
+            $this->assertEquals([], $result);
+        }
     }
 
 ?>
