@@ -11,7 +11,7 @@
     $password = 'root';
     $DB = new PDO($server, $username, $password);
 
-    class TaskTest extends PHPUnit_Framework_TestCase
+    class StylistTest extends PHPUnit_Framework_TestCase
     {
         function test_getStylistName()
         {
@@ -21,6 +21,17 @@
             $result = $test_stylist->getStylistName();
 
             $this->assertEquals($name, $result);
+        }
+
+        function test_get_Stylist_Id()
+        {
+            $stylist_name = "Fred";
+            $id =1;
+            $test_stylist = new Stylist($stylist_name, $id);
+
+            $result = $test_stylist->get_Stylist_Id();
+
+            $this->assertEquals(true, is_numeric($result));
         }
     }
 
