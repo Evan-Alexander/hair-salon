@@ -2,12 +2,12 @@
     class Stylist
     {
         private $stylist_name;
-        private $stylist_id;
+        private $id;
 
-        function __construct($stylist_name, $stylist_id = null)
+        function __construct($stylist_name, $id = null)
         {
             $this->stylist_name = $stylist_name;
-            $this->id = $stylist_id;
+            $this->id = $id;
         }
 
         function setStylistName($new_name)
@@ -20,7 +20,7 @@
             return $this->stylist_name;
         }
 
-        function get_Stylist_Id()
+        function getId()
         {
             return $this->id;
         }

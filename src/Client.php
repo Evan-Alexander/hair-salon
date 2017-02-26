@@ -14,7 +14,7 @@
 
         function setClientName($new_client_name)
         {
-            $this->client_name = $new_client_name;
+            $this->client_name = (string) $new_client_name;
         }
 
         function getClientName()
@@ -37,7 +37,30 @@
             return $this->id;
         }
 
+        function save()
+        {
+            $GLOBALS['DB']->exec("INSERT INTO clients (client_name, stylist_id) VALUES ('{$this->getClientName()}', {$this->getStylist_Id()})");
+            $this->id = $GLOBALS['DB']->lastInsertId();
+        }
 
+        static function getAll()
+        {
+            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients;");
+            $clients = array();
+            foreach($returned_clients as $client) {
+                $client_name = $client['client_name'];
+                $id = $client['id'];
+                $stylist_id = $client['stylist_id'];
+                $new_client = new Client($client_name, $id, $stylist_id);
+                array_push($clients, $new_client);
+            }
+            return $clients;
+        }
+
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM clients;");
+        }
     }
 
 
