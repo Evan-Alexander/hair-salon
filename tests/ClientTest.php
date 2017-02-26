@@ -178,6 +178,20 @@
             $this->assertEquals($comparison, $result);
         }
 
+        function test_deleteClient()
+        {
+            $client_name = "Sam";
+            $stylist_id = 3;
+            $id = 4;
+            $new_client = new Client($client_name, $client_id, $id);
+            $new_client->save();
+
+            $new_client->deleteClient();
+            $result = Client::getAll();
+
+            $this->assertEquals([], $result);
+        }
+
 
     }
 ?>

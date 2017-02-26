@@ -94,6 +94,11 @@
             $this->setStylist_Id($new_cuisine_id);
             $GLOBALS['DB']->exec("UPDATE clients SET client_name = '{$this->client_name}', cuisine_id = '{$this->cuisine_id}' WHERE id = {$this->getId()};");
         }
+
+        function deleteClient()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM clients WHERE id = {$this->getId()}");
+        }
     }
 
 

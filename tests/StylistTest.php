@@ -118,6 +118,30 @@
 
             $this->assertEquals($replacement_name, $result);
         }
+
+        function test_deletebyID()
+        {
+            $stylist_name = "Jim";
+            $test_stylist= new Stylist($stylist_name);
+            $test_stylist->save();
+
+            $client_name = "Bo";
+            $stylist_id = $test_stylist->getId();
+            $id = 1;
+            $new_client = new Client($client_name, $stylist_id, $id);
+            $new_client->save();
+
+            $client_name2 = "Bob";
+            $stylist_id2 = 23;
+            $id2 = 3;
+            $new_client2 = new Client($client_name2, $stylist_id2, $id2);
+            $new_client2->save();
+
+            $test_stylist->delete();
+            $result = Client::getAll();
+
+            $this->assertEquals(array($new_client2), $result);
+        }
     }
 
 ?>
