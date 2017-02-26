@@ -68,9 +68,9 @@
 
             //Arrange
             $name = "Work stuff";
-            $name2 = "Home stuff";
             $test_Stylist = new Stylist($name);
             $test_Stylist->save();
+            $name2 = "Home stuff";
             $test_Stylist2 = new Stylist($name2);
             $test_Stylist2->save();
             //Act
@@ -82,9 +82,9 @@
         function test_deleteAll()
         {
             $name = "Frank";
-            $name2 = "Hank";
             $test_stylist = new Stylist($name);
             $test_stylist->save();
+            $name2 = "Hank";
             $test_stylist2 = new Stylist($name2);
             $test_stylist->save();
 
