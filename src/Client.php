@@ -1,12 +1,14 @@
 <?php
     Class Client
     {
-        private $id;
         private $client_name;
+        private $stylist_id;
+        private $id;
 
-        function __construct($client_name, $id = null)
+        function __construct($client_name, $stylist_id, $id = null)
         {
             $this->client_name = $client_name;
+            $this->stylist_id = $stylist_id;
             $this->id = $id;
         }
 
@@ -20,6 +22,17 @@
             return $this->client_name;
         }
 
+        function setSylitst_Id($new_stylist_id)
+        {
+            $this->stylist_id = $new_stylist_id;
+        }
+
+        function getStylistId()
+        {
+            return $this->stylist_id;
+        }
+
+
         function getId()
         {
             return $this->id;
@@ -27,7 +40,7 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO clients (client_name) VALUES ('{$this->getClientName()}')");
+            $GLOBALS['DB']->exec("INSERT INTO clients (client_name, stylist_id) VALUES ('{$this->getClientName()}', '{$this->getStylistId}')");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
@@ -37,8 +50,9 @@
             $clients = array();
             foreach ($returned_clients as $client) {
                 $client_name = $client['client_name'];
+                $stylist_id = $client['stylist_id'];
                 $id = $client['id'];
-                $new_client = new Client($client_name, $id);
+                $new_client = new Client($client_name, $stylist_id, $id);
                 array_push($clients, $new_client);
             }
             return $clients;
@@ -62,18 +76,17 @@
             return $found_client;
         }
 
-        function getStylists()
+        function searchByStylists($stylist_id)
         {
-            $stylists = array();
-            $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists WHERE client_id = {$this->getId()};");
-            foreach($returned_stylists as $stylist) {
-                $stylist_name = $stylist['stylist_name'];
-                $id = $stylist['id'];
-                $client_id = $stylist['client_id'];
-                $new_stylist = new Stylist($stylist_name, $client_id, $id);
-                array_push($stylists, $new_stylist);
+            $found_clients = array();
+            $clients = Client::getAll();
+            foreach ($clients as $client) {
+                $found_stylist_id = $client->getStylistId();
+                if ($found_stylist_id == $stylist_id) {
+                    array_push($found_clients, $client);
+                }
             }
-            return $stylists;
+            return $found_clients;
         }
     }
 ?>
