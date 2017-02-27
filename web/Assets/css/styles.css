@@ -47,7 +47,7 @@ body {
 
 label {
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.5em;
 }
 
 p {
@@ -104,12 +104,13 @@ button:hover {
 
 #edit-well {
     background-color: #f9f68f;
-    width: 55%;
+    width: 50%;
     border: solid 5px #0128dd;
 }
 
 #edit-well button {
     box-shadow: none;
+    margin-top: 2%;
 }
 
 #edit-well li {

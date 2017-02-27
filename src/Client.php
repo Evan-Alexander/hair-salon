@@ -88,11 +88,11 @@
             return $found_clients;
         }
 
-        function update($new_name, $new_cuisine_id)
+        function update($new_name, $new_stylist_id)
         {
             $this->setClientName($new_name);
-            $this->setStylist_Id($new_cuisine_id);
-            $GLOBALS['DB']->exec("UPDATE clients SET client_name = '{$this->client_name}', cuisine_id = '{$this->cuisine_id}' WHERE id = {$this->getId()};");
+            $this->setStylist_Id($new_stylist_id);
+            $GLOBALS['DB']->exec("UPDATE clients SET client_name = '{$this->client_name}', stylist_id = '{$this->stylist_id}' WHERE id = {$this->getId()};");
         }
 
         function deleteClient()
