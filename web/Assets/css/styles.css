@@ -4,15 +4,11 @@ body {
     margin-right: 7.5%;
     background-color: #4b85f7;
     font-family: 'Quicksand', sans-serif;
-}
-
-body {
     background-image: url('../img/barber.svg');
     background-repeat: no-repeat;
     background-position: 90% 30%;
     background-attachment: scroll;
     background-size: 400px 800px;
-    background-
 }
 
 #ed1268 - magenta
@@ -32,8 +28,9 @@ body {
 .jumbotron {
     background-color: #f9f68f;
     margin: 2% 0;
-    width: 55%;
+    width: 50%;
     border: solid 5px #0128dd;
+    font-weight: bold;
 }
 
 .add {
@@ -51,7 +48,6 @@ body {
 label {
     font-weight: bold;
     font-size: 1.2em;
-
 }
 
 p {
@@ -104,14 +100,12 @@ button:hover {
     width: 30%;
     text-align: center;
     border: solid 3px #0128dd;
-
 }
 
 #edit-well {
     background-color: #f9f68f;
     width: 55%;
     border: solid 5px #0128dd;
-
 }
 
 #edit-well button {

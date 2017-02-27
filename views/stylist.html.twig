@@ -10,10 +10,9 @@
     <body>
         <div class="container">
             <div class="well" id="stylist_well">
-                <h1>{{stylists.getStylistName}}</h1>
+                <h1>Clients who see {{stylists.getStylistName}}</h1>
 
                 {% if clients is not empty %}
-                <p>List of clients for each stylist.</p>
                 <ul>
                     {% for client in clients %}
                     <div id="well-showing-clients" class="well">
