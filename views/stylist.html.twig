@@ -9,6 +9,15 @@
     </head>
     <body>
         <div class="container">
+            <h3>Add another client to this stylist</h3>
+
+            <form class="form-group" action="/client" method="post">
+                <input id="stylist_id" type="hidden" name="stylist_id" value="{{ stylists.getId() }}">
+                <label for="client_name">Client Name</label>
+                <input class="form-control" type="text" id="client_name" name="client_name">
+
+                <button class="btn btn-info add" type="submit" name="button">Add client</button>
+            </form>
             <div class="well" id="stylist_well">
                 <h1>Clients who see {{stylists.getStylistName}}</h1>
 
@@ -23,15 +32,6 @@
                 </ul>
                 {% endif %}
             </div>
-            <h3>Add another client to this stylist</h3>
-
-            <form class="form-group" action="/client" method="post">
-                <input id="stylist_id" type="hidden" name="stylist_id" value="{{ stylists.getId() }}">
-                <label for="client_name">Client Name</label>
-                <input class="form-control" type="text" id="client_name" name="client_name">
-
-                <button class="btn btn-info add" type="submit" name="button">Add client</button>
-            </form>
             <li class="return"><a  href="/">Return to a list of stylists</a></li>
         </div>
     </body>
