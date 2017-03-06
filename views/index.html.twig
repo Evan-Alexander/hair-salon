@@ -26,6 +26,9 @@
                     <li><a href="/stylists/{{stylist.getId}}">{{stylist.getStylistName}}</a></li>
                     {% endfor %}
                 </ul>
+                <form action='/delete-stylists' method='post'>
+                    <button type='submit' class="btn btn-md btn-danger">Delete All Stylists</button>
+                </form>
                 {% else %}
                 <p>There are no stylists in the system!</p>
                 {% endif %}

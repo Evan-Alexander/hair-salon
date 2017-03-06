@@ -29,25 +29,34 @@ date_default_timezone_set('America/Los_Angeles');
     });
 
     $app->post("/stylists", function() use ($app) {
+        $stylist = new Stylist($_POST['stylist_name']);
+        $stylist->save();
+        return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+    });
 
-    $stylist = new Stylist($_POST['stylist_name']);
-    $stylist->save();
-    return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+    $app->post("/delete-stylists", function() use ($app) {
+        Stylist::deleteAll();
+        return $app->redirect('/');
     });
 
     $app->get("/stylists/{id}", function($id) use ($app) {
-    return $app['twig']->render('stylist.html.twig', array('stylists' => Stylist::find($id), 'clients' => Client::searchBystylist($id)));
+        return $app['twig']->render('stylist.html.twig', array('stylists' => Stylist::find($id), 'clients' => Client::searchBystylist($id)));
     });
 
     $app->post("/client", function() use ($app) {
-    $new_client = new Client ($_POST['client_name'], $_POST['stylist_id']);
-    $new_client->save();
-    return $app['twig']->render('stylist.html.twig', array('stylists' => Stylist::find($_POST['stylist_id']), 'clients' => Client::searchBystylist($_POST['stylist_id'])));
+        $new_client = new Client ($_POST['client_name'], $_POST['stylist_id']);
+        $new_client->save();
+        return $app['twig']->render('stylist.html.twig', array('stylists' => Stylist::find($_POST['stylist_id']), 'clients' => Client::searchBystylist($_POST['stylist_id'])));
     });
 
     $app->get("/client-edit/{id}", function($id) use ($app) {
-    return $app['twig']->render('client-editor.html.twig', array('client' => Client::find($id), 'stylists' => Stylist::getAll()));
+        return $app['twig']->render('client-editor.html.twig', array('client' => Client::find($id), 'stylists' => Stylist::getAll()));
     });
+
+    // $app->get("/client-edit/{id}", function($id) use ($app) {
+    //
+    //     return $app['twig']->render('client-editor.html.twig', array('client' => Client::find($id), 'stylists' => Stylist::getAll()));
+    // });
 
     $app->patch("/display-update", function() use ($app) {
         $current_client = Client::find($_POST['id']);
