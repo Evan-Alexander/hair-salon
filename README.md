@@ -19,10 +19,10 @@ CREATE TABLE clients (id serial PRIMARY KEY, client_name VARCHAR(255), stylist_i
 |--------|-------|------|
 | An owner inputs a name of a stylist. | "Jane" | "Jane" |
 | An owner inputs another stylist. | "Mary" | " Jane", "Mary" |
-| An owner deletes all stylists. | 'delete' | " " |
+| An owner deletes all stylists. | 'delete' | "There are no stylists in the system." |
 | An owner adds a stylist and assigns said stylist with a client. | Stylist - "Barbara", Client - "Max" | "Barbara", "Max" |
 | An owner deletes a client. | "Max" | " " |
-| An owner deletes all clients. | 'delete' | " " |
+| An owner deletes all clients. | 'delete' | "No clients available." |
 
 
 &nbsp;
