@@ -30,7 +30,12 @@
                     </div>
                     {% endfor %}
                 </ul>
+
                 {% endif %}
+                <form class="form-group" action="/delete_stylist/{{stylists.getId}}"  method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button id="delete" class="btn btn-danger" type="submit" name="button">Delete this stylist</button>
+                </form>
             </div>
             <li class="return"><a  href="/">Return to a list of stylists</a></li>
         </div>
